@@ -41,13 +41,10 @@ class HostsConnectedTo(object):
             return result
 
     def run(self):
-        if os.path.isfile(self.file):
-            parsed_result = self.parse_file()
-            if parsed_result:
-                print('List of hostnames connected to the host {} during the period between {} and {}\n{}'.format(
-                    self.hostname, self.init_datetime, self.end_datetime, parsed_result))
-            else:
-                print('There is no hosts connected to the host {} during the period between {} and {}'.format(
-                    self.hostname, self.init_datetime, self.end_datetime))
+        parsed_result = self.parse_file()
+        if parsed_result:
+            print('List of hostnames connected to the host {} during the period between {} and {}\n{}'.format(
+                self.hostname, self.init_datetime, self.end_datetime, parsed_result))
         else:
-            print('File does not exists.')
+            print('There is no hosts connected to the host {} during the period between {} and {}'.format(
+                self.hostname, self.init_datetime, self.end_datetime))

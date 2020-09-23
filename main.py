@@ -1,7 +1,9 @@
+import os
+
 from app.parser.parse_data import HostsConnectedTo
 from app.parser.unlimited_parse import UnlimitedParser
 
-FILE = ''  # For example => 'app/tests/files/input-file-10000.txt'
+FILE = 'app/tests/files/input-file-10000.txt'  # For example => 'app/tests/files/input-file-10000.txt'
 
 
 class Menu(object):
@@ -66,14 +68,15 @@ class Menu(object):
             self.unlimited_input_parser
         ]
 
+        print(f'FILE: {FILE}')
         result = self.get_option(options)
 
         func_options[result - 1]()
 
 
 if __name__ == '__main__':
-    if FILE:
+    if os.path.isfile(FILE):
         clarity = Menu()
         clarity.select_option()
     else:
-        print('Please, provide a file')
+        print('File does not exists.')

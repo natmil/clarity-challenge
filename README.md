@@ -38,7 +38,7 @@ Execute the script.
 $ python3 main.py
 ```
 
-You'll see this menu, just select the options you want.
+You'll see this menu, just select the options you want and follow the instructions.
 
 ```
 1. Parse the data with a time_init, time_end
