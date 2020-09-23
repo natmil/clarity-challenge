@@ -24,8 +24,6 @@ class UnlimitedParser(object):
         self.file = file
         self.host = host
         self.scheduler = sched.scheduler(time.time, time.sleep)
-        self.current_timestamp = int(time.time())  # Current unix timestamp
-        self.one_hour_ago_timestamp = int(self.current_timestamp) - 3600  # Current unix timestamp - 1 hour
 
     def hostnames_connected_to(self, init_datetime, end_datetime):
         result = HostsConnectedTo(self.file, init_datetime, end_datetime, hostname=self.host)
@@ -46,9 +44,12 @@ class UnlimitedParser(object):
             return list(takewhile(lambda x: x[1] == max_value, counter.most_common()))
 
     def unlimited_parse(self, sc):
-        result_host_connected_to = self.hostnames_connected_to(self.one_hour_ago_timestamp, self.current_timestamp)
-        result_host_receiving_conn = self.hostnames_receiving_connections(self.one_hour_ago_timestamp, self.current_timestamp)
-        result_host_most_connections = self.hostname_most_connections_hour(self.one_hour_ago_timestamp, self.current_timestamp)
+        current_timestamp = int(time.time())  # Current unix timestamp
+        one_hour_ago_timestamp = int(current_timestamp) - 3600  # Current unix timestamp - 1 hour
+
+        result_host_connected_to = self.hostnames_connected_to(one_hour_ago_timestamp, current_timestamp)
+        result_host_receiving_conn = self.hostnames_receiving_connections(one_hour_ago_timestamp, current_timestamp)
+        result_host_most_connections = self.hostname_most_connections_hour(one_hour_ago_timestamp, current_timestamp)
 
         if result_host_connected_to:
             print(f'\nA list of hostnames connected to {self.host} host during the last hour'
