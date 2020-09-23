@@ -74,7 +74,7 @@ The tool should both parse previously written log files and terminate or collect
 
 The script will output, once every hour:
   - a list of hostnames connected to a given (configurable) host during the last hour
-  > I recycled the function from the first challenge. But this time, I use for the arguments the current unix timestamp and the same one minus 3600, which is 1 hour in seconds.
+  > I recycled the function from the first challenge. But this time, I used for the arguments the current unix timestamp and the same one minus 3600, which is 1 hour in seconds.
   - a list of hostnames received connections from a given (configurable) host during the last hour
   > Same as before, I did use the same function. But this time, I pass and extra argument called 'received' as True, to switch the index of the host.
   - the hostname that generated most connections in the last hour
