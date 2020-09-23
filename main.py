@@ -3,7 +3,7 @@ import os
 from app.parser.parse_data import HostsConnectedTo
 from app.parser.unlimited_parse import UnlimitedParser
 
-FILE = 'app/tests/files/input-file-10000.txt'  # For example => 'app/tests/files/input-file-10000.txt'
+FILE = ''  # For example => 'app/tests/files/input-file-10000.txt'
 
 
 class Menu(object):
